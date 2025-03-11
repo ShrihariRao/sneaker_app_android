@@ -3,7 +3,8 @@ import 'package:sneaker_shop/models/shoe.dart';
 
 class ShowTile extends StatelessWidget {
   Shoe shoe;
-  ShowTile({ Key? key, required this.shoe }) : super(key: key);
+  void Function()? onTap;
+  ShowTile({ Key? key, required this.shoe, required this.onTap }) : super(key: key);
 
   @override
   Widget build(BuildContext context){
@@ -27,9 +28,14 @@ class ShowTile extends StatelessWidget {
           ),
 
           // description
-          Text(
-            shoe.description,
-            style: TextStyle(color: Colors.grey[600]),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25.0
+            ),
+            child: Text(
+              shoe.description,
+              style: TextStyle(color: Colors.grey[600]),
+            ),
           ),
 
           // price  + details
@@ -65,19 +71,22 @@ class ShowTile extends StatelessWidget {
                 ),
             
                 //plus button
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: const BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12),
+                      )
+                    ),
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
                     )
                   ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  )
                 ),
               ],
             ),
