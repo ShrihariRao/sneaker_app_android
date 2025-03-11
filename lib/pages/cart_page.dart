@@ -13,6 +13,7 @@ class CartPage extends StatelessWidget {
       builder: (context, value, child) => Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // heading
           const Text(
@@ -20,7 +21,7 @@ class CartPage extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
 
-          const SizedBox(height: 10,),
+          const SizedBox(height: 20,),
 
           Expanded(
             child: ListView.builder(
